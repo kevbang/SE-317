@@ -36,36 +36,36 @@ public class User {
 
     }
 
-    /*
-     * This method is used to perform a daily action for the user.
-     * @param action The action we want to choose.
-     */
-    public boolean performDailyAction(User name, double depositAmount) {
-        LocalDate today = LocalDate.now();
-        System.out.println("Today is " + today);
-        // Check if the date has changed
-        if (today.isAfter(name.date)) {
-            // Update the date to today
-            name.date = today;
-            this.dailyDepositTotal = 0; // Reset the daily deposit total
-        }
-
-        if(dailyDepositTotal + depositAmount > 5000) {
-            System.out.println("** The deposit has failed. Daily deposit limit of $5000 has been exceeded. **");
-            return false;
-        }
-
-        if(name.checkingAccount.deposit(depositAmount)) {
-            this.dailyDepositTotal += depositAmount;
-            System.out.println("** The deposit has been successful. **");
-            System.out.println("Deposit Total: " + dailyDepositTotal);
-        } else {
-            System.out.println("** The deposit has failed. **");
-            return false;
-        }
-
-        return true;
-    }
+//    /*
+//     * This method is used to perform a daily action for the user.
+//     * @param action The action we want to choose.
+//     */
+//    public boolean performDailyAction(User name, double depositAmount) {
+//        LocalDate today = LocalDate.now();
+//        System.out.println("Today is " + today);
+//        // Check if the date has changed
+//        if (today.isAfter(name.date)) {
+//            // Update the date to today
+//            name.date = today;
+//            this.dailyDepositTotal = 0; // Reset the daily deposit total
+//        }
+//
+//        if(dailyDepositTotal + depositAmount > 5000) {
+//            System.out.println("** The deposit has failed. Daily deposit limit of $5000 has been exceeded. **");
+//            return false;
+//        }
+//
+//        if(name.checkingAccount.deposit(depositAmount)) {
+//            this.dailyDepositTotal += depositAmount;
+//            System.out.println("** The deposit has been successful. **");
+//            System.out.println("Deposit Total: " + dailyDepositTotal);
+//        } else {
+//            System.out.println("** The deposit has failed. **");
+//            return false;
+//        }
+//
+//        return true;
+//    }
 
 
 
