@@ -19,10 +19,10 @@ Adding a checklist (Not sure if I checked off everything I did):
 ## 2. Saving Account
 
 - ~~The user can have one saving account.~~
-- The user can deposit up to **$5000 per day** using one or more transactions.
-- The user **cannot withdraw** any money from this account.
-- The user can transfer up to **$100 per day** from their saving account to their checking account using one or more transactions.
-- The user **cannot use this account** to pay bills.
+- ~~The user can deposit up to **$5000 per day** using one or more transactions.~~
+- ~~The user **cannot withdraw** any money from this account.~~
+- ~~The user can transfer up to **$100 per day** from their saving account to their checking account using one or more transactions.~~
+- ~~The user **cannot use this account** to pay bills.~~
 - ~~The user can check the balance of their saving account.~~
 - ~~The bank does **not allow overdraft**; the balance **cannot be negative**.~~
 
