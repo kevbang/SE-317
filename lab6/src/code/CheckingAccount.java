@@ -26,6 +26,15 @@ public class CheckingAccount extends Account{
         return false;
     }
 
+    public boolean transferToSavings(SavingsAccount savingsAccount, double amount) {
+        if (amount > 0 && amount <= this.balance) {
+            this.balance -= amount;
+            savingsAccount.deposit(amount);
+            return true;
+        }
+        return false;
+    }
+
 
     public static void main(String[] args) {
         CheckingAccount acc = new CheckingAccount(999);

@@ -26,4 +26,14 @@ public class SavingsAccount extends Account{
         }
         return false;
     }
+
+    public boolean transferToChecking(CheckingAccount checkingAccount, double amount) {
+        if (amount > 0 && amount <= this.balance) {
+            this.balance -= amount;
+            checkingAccount.deposit(amount);
+            return true;
+        }
+        return false;
+    }
+
 }
