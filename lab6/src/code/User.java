@@ -7,6 +7,7 @@ public class User {
     private String password;
     private CheckingAccount checkingAccount;
     private SavingsAccount savingsAccount;
+    private UtilityAccount utilityAccount;
     // used to track the current date
     private LocalDate date;
     private double dailyDepositTotal = 0;
@@ -15,6 +16,9 @@ public class User {
     public User(String name, String password, double initialChecking, double initialSavings) {
         this.name = name;
         this.password = password;
+        this.checkingAccount = new CheckingAccount(initialChecking);
+        this.savingsAccount = new SavingsAccount(initialSavings);
+        this.utilityAccount = new UtilityAccount(name, password);
         this.date = LocalDate.now();
 
         try {
@@ -32,8 +36,14 @@ public class User {
         } catch (IllegalArgumentException e) {
             System.out.println("Error creating user for " + this.name + ": "+ e.getMessage());
         }
+    }
 
+    public UtilityAccount getUtilityAccount() {
+        return utilityAccount;
+    }
 
+    public CheckingAccount getCheckingAccount() {
+        return checkingAccount;
     }
 
 //    /*
