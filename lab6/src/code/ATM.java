@@ -8,15 +8,18 @@ import java.util.Scanner;
  */
 public class ATM {
     public static void main(String[] args) {
-        boolean exit = false;
-        Scanner scanner = new Scanner(System.in);
+        boolean exit = false; // Flag to control the ATM loop
+        Scanner scanner = new Scanner(System.in); // Scanner for user input
 
+        // Create a new user with initial checking and savings account balances
         User user = new User("John Doe", "password123", 1000, 500);
 
         System.out.println("Welcome to the ATM, " + user.getName() + "!");
 
+        // Main loop for the ATM menu
         while (!exit) {
             try {
+                // Display the menu options
                 System.out.println("\nPlease select an option:");
                 System.out.println("1. Check Checking Account Balance");
                 System.out.println("2. Check Savings Account Balance");
@@ -28,16 +31,21 @@ public class ATM {
                 System.out.println("8. Pay a bill");
                 System.out.println("9. Exit");
 
+                // Get the user's choice
                 int choice = scanner.nextInt();
 
+                // Handle the user's choice
                 switch (choice) {
                     case 1:
+                        // Display the checking account balance
                         System.out.println("Checking Account Balance: $" + user.getCheckingAccount().getBalance());
                         break;
                     case 2:
+                        // Display the savings account balance
                         System.out.println("Savings Account Balance: $" + user.getSavingsAccount().getBalance());
                         break;
                     case 3:
+                        // Deposit to the checking account
                         System.out.print("Enter amount to deposit to Checking Account: ");
                         double depositChecking = scanner.nextDouble();
                         if (user.performDailyDeposit(depositChecking)) {
@@ -45,6 +53,7 @@ public class ATM {
                         }
                         break;
                     case 8:
+                        // Pay a bill using the checking account
                         System.out.print("Enter bill amount to pay: ");
                         double billAmount = scanner.nextDouble();
                         if (billAmount <= 0) {
@@ -60,17 +69,20 @@ public class ATM {
                         }
                         break;
                     case 9:
+                        // Exit the ATM
                         System.out.println("Thank you for using the ATM. Goodbye!");
                         exit = true;
                         break;
                     default:
+                        // Handle invalid menu options
                         System.out.println("Invalid option. Please try again.");
                 }
             } catch (Exception e) {
+                // Handle invalid input (e.g., non-numeric input)
                 System.out.println("Invalid input. Please enter a valid number.");
                 scanner.nextLine(); // Clear invalid input
             }
         }
-        scanner.close();
+        scanner.close(); // Close the scanner
     }
 }
