@@ -39,7 +39,7 @@ public class UtilityAccount {
         if (billPaymentHistory.size() == 3) {
             billPaymentHistory.remove(0); // Remove the oldest bill
         }
-        billPaymentHistory.add(billDetails);
+        billPaymentHistory.add(billDetails); // Add the new bill
     }
 
     // Retrieves the last 3 paid bills

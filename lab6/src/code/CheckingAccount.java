@@ -39,6 +39,7 @@ public class CheckingAccount extends Account {
      * @param amount The amount to withdraw.
      * @return true if the withdrawal is successful, false if the withdrawal failed.
      */
+    @Override
     public boolean withdraw(double amount) {
         if (amount > 0 && (dailyWithdrawalTotal + amount) <= DAILY_WITHDRAWAL_LIMIT && amount <= this.balance) {
             this.balance -= amount;

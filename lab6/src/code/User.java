@@ -39,6 +39,14 @@ public class User {
     }
 
     /**
+     * Sets the checking account for the user.
+     * @param checkingAccount The checking account to set.
+     */
+    public void setUtilityAccount(UtilityAccount utilityAccount) {
+        this.utilityAccount = utilityAccount;
+    }
+
+    /**
      * Performs a daily deposit action for the user.
      * @param depositAmount The amount to deposit.
      * @return true if the deposit is successful, false otherwise.
@@ -84,7 +92,6 @@ public class User {
     }
 
     public UtilityAccount getUtilityAccount() {
-        resetDailyLimits();
         return utilityAccount;
     }
 

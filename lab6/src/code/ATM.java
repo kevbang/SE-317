@@ -27,7 +27,8 @@ public class ATM {
                 System.out.println("8. Pay a bill");
                 System.out.println("9. View Utility Account Bill Payment History");
                 System.out.println("10. Check Next Utility Bill");
-                System.out.println("11. Exit");
+                System.out.println("11. Create a New Utility Account");
+                System.out.println("12. Exit");
 
                 // Get user choice
                 int choice = scanner.nextInt();
@@ -59,7 +60,7 @@ public class ATM {
                         } else if (user.getSavingsAccount().deposit(depositSavings)) {
                             System.out.println("Deposit to Savings Account successful!");
                         } else {
-                            System.out.println("Deposit failed. Daily deposit limit exceeded or other issue.");
+                            System.out.println("Deposit failed. Daily deposit limit exceeded.");
                         }
                         break;
 
@@ -72,7 +73,7 @@ public class ATM {
                         } else if (user.getCheckingAccount().withdraw(withdrawAmount)) {
                             System.out.println("Withdrawal successful!");
                         } else {
-                            System.out.println("Withdrawal failed. Insufficient funds or other issue.");
+                            System.out.println("Withdrawal failed. Insufficient funds or daily limit reached.");
                         }
                         break;
 
@@ -85,7 +86,7 @@ public class ATM {
                         } else if (user.getCheckingAccount().transferToSavings(user.getSavingsAccount(), transferToSavings)) {
                             System.out.println("Transfer to Savings Account successful!");
                         } else {
-                            System.out.println("Transfer failed. Insufficient funds or other issue.");
+                            System.out.println("Transfer failed. Insufficient funds or daily limit reached.");
                         }
                         break;
 
@@ -98,7 +99,7 @@ public class ATM {
                         } else if (user.getSavingsAccount().transferToChecking(user.getCheckingAccount(), transferToChecking)) {
                             System.out.println("Transfer to Checking Account successful!");
                         } else {
-                            System.out.println("Transfer failed. Daily transfer limit exceeded or other issue.");
+                            System.out.println("Transfer failed. Daily transfer limit exceeded or cannot transfer more than $100.");
                         }
                         break;
                     case 8:
@@ -130,6 +131,18 @@ public class ATM {
                         System.out.println("Due Date: " + user.getUtilityAccount().getNextBillAmount());
                         break;
                     case 11:
+                        // Create a new utility account
+                        scanner.nextLine(); // Consume the newline left by nextInt()
+                        System.out.print("Enter a username for the new utility account: ");
+                        String username = scanner.nextLine();
+                        System.out.print("Enter a password for the new utility account: ");
+                        String password = scanner.nextLine();
+                        UtilityAccount newUtilityAccount = new UtilityAccount(username, password);
+                        user.setUtilityAccount(newUtilityAccount);
+                        System.out.println("Utility account created successfully!");
+                        System.out.println("Your new utility account number is: " + newUtilityAccount.getAccountNumber());
+                        break;
+                    case 12:
                         // Exit the ATM
                         System.out.println("Thank you for using the ATM. Goodbye!");
                         exit = true;
