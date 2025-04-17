@@ -50,6 +50,57 @@ public class ATM {
                             System.out.println("Deposit successful!");
                         }
                         break;
+                    case 4:
+                        // Deposit to savings account
+                        System.out.print("Enter amount to deposit to Savings Account: ");
+                        double depositSavings = scanner.nextDouble();
+                        if (depositSavings <= 0) {
+                            System.out.println("Invalid deposit amount. Must be positive.");
+                        } else if (user.getSavingsAccount().deposit(depositSavings)) {
+                            System.out.println("Deposit to Savings Account successful!");
+                        } else {
+                            System.out.println("Deposit failed. Daily deposit limit exceeded or other issue.");
+                        }
+                        break;
+
+                    case 5:
+                        // Withdraw from checking account
+                        System.out.print("Enter amount to withdraw from Checking Account: ");
+                        double withdrawAmount = scanner.nextDouble();
+                        if (withdrawAmount <= 0) {
+                            System.out.println("Invalid withdrawal amount. Must be positive.");
+                        } else if (user.getCheckingAccount().withdraw(withdrawAmount)) {
+                            System.out.println("Withdrawal successful!");
+                        } else {
+                            System.out.println("Withdrawal failed. Insufficient funds or other issue.");
+                        }
+                        break;
+
+                    case 6:
+                        // Transfer from checking to savings
+                        System.out.print("Enter amount to transfer from Checking to Savings: ");
+                        double transferToSavings = scanner.nextDouble();
+                        if (transferToSavings <= 0) {
+                            System.out.println("Invalid transfer amount. Must be positive.");
+                        } else if (user.getCheckingAccount().transferToSavings(user.getSavingsAccount(), transferToSavings)) {
+                            System.out.println("Transfer to Savings Account successful!");
+                        } else {
+                            System.out.println("Transfer failed. Insufficient funds or other issue.");
+                        }
+                        break;
+
+                    case 7:
+                        // Transfer from savings to checking
+                        System.out.print("Enter amount to transfer from Savings to Checking: ");
+                        double transferToChecking = scanner.nextDouble();
+                        if (transferToChecking <= 0) {
+                            System.out.println("Invalid transfer amount. Must be positive.");
+                        } else if (user.getSavingsAccount().transferToChecking(user.getCheckingAccount(), transferToChecking)) {
+                            System.out.println("Transfer to Checking Account successful!");
+                        } else {
+                            System.out.println("Transfer failed. Daily transfer limit exceeded or other issue.");
+                        }
+                        break;
                     case 8:
                         // Pay a bill using the checking account
                         System.out.print("Enter bill amount to pay: ");
