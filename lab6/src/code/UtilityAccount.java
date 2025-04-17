@@ -18,10 +18,10 @@ public class UtilityAccount {
      */
     private int randomAccountNumber() {
         Random rand = new Random();
-        return rand.nextInt(1000000); // Generates a random 6-digit account number
+        return 100000 + rand.nextInt(900000); // Ensures a 6-digit number
     }
 
-    public utilityAccountUser(String username, String password) {
+    public UtilityAccount(String username, String password) {
         this.username = username;
         this.password = password;
         this.accountNumber = randomAccountNumber();
@@ -49,6 +49,9 @@ public class UtilityAccount {
 
     // Sets the next bill payment amount and due date
     public void setNextBill(double amount, String dueDate) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Bill amount cannot be negative.");
+        }
         this.nextBillAmount = amount;
         this.nextBillDueDate = dueDate;
     }
