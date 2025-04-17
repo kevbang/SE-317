@@ -92,6 +92,7 @@ public class User {
         return lastResetDate;
     }
 
+    // Testing
     public static void main(String[] args) {
         User user1 = new User("John Deere", "Deere", 1000, 500);
 
