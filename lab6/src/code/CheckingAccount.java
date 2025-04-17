@@ -39,6 +39,7 @@ public class CheckingAccount extends Account {
      * @param amount The amount to withdraw.
      * @return true if the withdrawal is successful, false if the withdrawal failed.
      */
+    @Override
     public boolean withdraw(double amount) {
         if (amount > 0 && (dailyWithdrawalTotal + amount) <= DAILY_WITHDRAWAL_LIMIT && amount <= this.balance) {
             this.balance -= amount;
@@ -74,8 +75,7 @@ public class CheckingAccount extends Account {
     public boolean payBill(UtilityAccount utilityAccount, double amount) {
         if (amount > 0 && amount <= this.balance) {
             this.balance -= amount;
-            // Assume UtilityAccount has a method to record payment
-            // utilityAccount.recordPayment(amount);
+            utilityAccount.addBillPayment("Paid $" + amount);
             return true;
         }
         return false;
@@ -99,10 +99,3 @@ public class CheckingAccount extends Account {
     }
 }
 
-
-    public static void main(String[] args) {
-        CheckingAccount acc = new CheckingAccount(999);
-
-        System.out.println(acc.getBalance());
-    }
-}

@@ -28,9 +28,13 @@ Adding a checklist (Not sure if I checked off everything I did):
 
 ## 3. Utility Company
 
-- The user will create a new account at the utility company using a **username** and a **password**.
-- The utility company will assign the user a new **6-digit account number**, generated automatically.
-- The user can access their utility company account using their **username** (or utility account number) and password.
-- The user can log in to their utility account at any time and:
-  - Check their **bill payment history**, including the **last 3 paid bills**.
-  - View the **next bill payment amount** and its **due date**.
+- ~~The user will create a new account at the utility company using a **username** and a **password**.~~
+- ~~The utility company will assign the user a new **6-digit account number**, generated automatically.~~
+- ~~The user can access their utility company account using their **username** (or utility account number) and password.~~
+- ~~The user can log in to their utility account at any time and:~~
+- ~~Check their **bill payment history**, including the **last 3 paid bills**.~~
+- ~~View the **next bill payment amount** and its **due date**.~~
+
+# Instructions to Run the Code
+1. Run the ATM file
+2. Read the prompts and select desired action
