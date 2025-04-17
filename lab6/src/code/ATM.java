@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ATM {
     public static void main(String[] args) {
         boolean exit = false;
-        Scanner sncr = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         // Create a scanner for user input
         User user = new User("John Doe", "password123", 1000, 500);
@@ -28,7 +28,7 @@ public class ATM {
             System.out.println("8. Pay a bill");
             System.out.println("9. Exit");
 
-            int choice = scnr.nextInt();
+            int choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:

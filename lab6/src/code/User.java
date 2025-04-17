@@ -18,8 +18,8 @@ public class User {
         this.password = password;
         this.checkingAccount = new CheckingAccount(initialChecking);
         this.savingsAccount = new SavingsAccount(initialSavings);
-        this.utilityAccount = new UtilityAccount(name, password);
-        this.date = LocalDate.now();
+        this.utilityAccount = new UtilityAccountUser(name, password);
+        this.lastResetdate = LocalDate.now();
 
         try {
             if (initialChecking < 0) {
@@ -38,12 +38,34 @@ public class User {
         }
     }
 
+    /**
+     * Resets daily limits if the date has changed.
+     */
+    private void resetDailyLimits() {
+        LocalDate today = LocalDate.now();
+        if (!today.equals(lastResetDate)) {
+            checkingAccount.resetDailyLimits();
+            savingsAccount.resetDailyLimits();
+            lastResetDate = today;
+        }
+    }
+
     public UtilityAccount getUtilityAccount() {
+        resetDailyLimits();
         return utilityAccount;
     }
 
     public CheckingAccount getCheckingAccount() {
+        resetDailyLimits();
         return checkingAccount;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
 //    /*
@@ -77,9 +99,6 @@ public class User {
 //        return true;
 //    }
 
-
-
-
     public static void main(String[] args) {
         User user1 = new User("John Deere", "Deere", 1000, 500);
 
@@ -94,8 +113,5 @@ public class User {
         user1.performDailyAction(user1, 500);
         user1.performDailyAction(user1, 4501);
         System.out.println("Checking: " + user1.checkingAccount.getBalance() + " Savings: " + user1.savingsAccount.getBalance());
-
-
     }
-
 }
