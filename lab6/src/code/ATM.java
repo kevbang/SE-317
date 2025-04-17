@@ -2,13 +2,9 @@ package code;
 
 import java.util.Scanner;
 
-/**
- * ATM class that simulates an ATM machine.
- * It allows users to check balances, deposit, withdraw, transfer money, and pay bills.
- */
 public class ATM {
     public static void main(String[] args) {
-        boolean exit = false; // Flag to control the ATM loop
+        boolean exit = false; // Flag to control the main loop
         Scanner scanner = new Scanner(System.in); // Scanner for user input
 
         // Create a new user with initial checking and savings account balances
@@ -16,10 +12,10 @@ public class ATM {
 
         System.out.println("Welcome to the ATM, " + user.getName() + "!");
 
-        // Main loop for the ATM menu
+        // Main loop for ATM operations
         while (!exit) {
             try {
-                // Display the menu options
+                // Display menu options
                 System.out.println("\nPlease select an option:");
                 System.out.println("1. Check Checking Account Balance");
                 System.out.println("2. Check Savings Account Balance");
@@ -29,23 +25,25 @@ public class ATM {
                 System.out.println("6. Transfer from Checking to Savings");
                 System.out.println("7. Transfer from Savings to Checking");
                 System.out.println("8. Pay a bill");
-                System.out.println("9. Exit");
+                System.out.println("9. View Utility Account Bill Payment History");
+                System.out.println("10. Check Next Utility Bill");
+                System.out.println("11. Exit");
 
-                // Get the user's choice
+                // Get user choice
                 int choice = scanner.nextInt();
 
-                // Handle the user's choice
+                // Handle user choice
                 switch (choice) {
                     case 1:
-                        // Display the checking account balance
+                        // Display checking account balance
                         System.out.println("Checking Account Balance: $" + user.getCheckingAccount().getBalance());
                         break;
                     case 2:
-                        // Display the savings account balance
+                        // Display savings account balance
                         System.out.println("Savings Account Balance: $" + user.getSavingsAccount().getBalance());
                         break;
                     case 3:
-                        // Deposit to the checking account
+                        // Deposit to checking account
                         System.out.print("Enter amount to deposit to Checking Account: ");
                         double depositChecking = scanner.nextDouble();
                         if (user.performDailyDeposit(depositChecking)) {
@@ -69,16 +67,28 @@ public class ATM {
                         }
                         break;
                     case 9:
+                        // Display the last 3 bill payments
+                        System.out.println("Last 3 Bill Payments:");
+                        for (String bill : user.getUtilityAccount().getBillPaymentHistory()) {
+                            System.out.println(bill);
+                        }
+                        break;
+                    case 10:
+                        // Display the next utility bill amount and due date
+                        System.out.println("Next Bill Amount: $" + user.getUtilityAccount().getNextBillAmount());
+                        System.out.println("Due Date: " + user.getUtilityAccount().getNextBillAmount());
+                        break;
+                    case 11:
                         // Exit the ATM
                         System.out.println("Thank you for using the ATM. Goodbye!");
                         exit = true;
                         break;
                     default:
-                        // Handle invalid menu options
+                        // Handle invalid menu option
                         System.out.println("Invalid option. Please try again.");
                 }
             } catch (Exception e) {
-                // Handle invalid input (e.g., non-numeric input)
+                // Handle invalid input
                 System.out.println("Invalid input. Please enter a valid number.");
                 scanner.nextLine(); // Clear invalid input
             }
