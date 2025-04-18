@@ -1,7 +1,6 @@
 package code;
 
 import java.time.LocalDate;
-import java.util.HashMap;
 
 public class User {
 
