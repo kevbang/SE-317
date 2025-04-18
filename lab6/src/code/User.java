@@ -1,6 +1,7 @@
 package code;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 
 public class User {
 
@@ -11,6 +12,7 @@ public class User {
     private UtilityAccount utilityAccount;
     private LocalDate lastResetDate;
     private double dailyDepositTotal;
+
 
     public User(String name, String password, double initialChecking, double initialSavings) {
         if (initialChecking < 0 || initialSavings < 0) {
