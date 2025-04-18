@@ -1,15 +1,14 @@
 package code;
 
-import java.util.Random;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
+import java.text.SimpleDateFormat;
 
 public class UtilityAccount {
     private String username;
     private String password;
     private int accountNumber;
-    private double nextBillAmount;
-    private String nextBillDueDate;
+    private double nextBillAmount = 50; // starts at 50.
+    public String nextBillDueDate;
     public List<String> billPaymentHistory;
 
     /*
@@ -26,6 +25,10 @@ public class UtilityAccount {
         this.password = password;
         this.accountNumber = randomAccountNumber();
         this.billPaymentHistory = new ArrayList<>();
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE, MMMM dd");
+        nextBillDueDate = formatter.format(date);
+
     }
 
     // Logs in using username or account number and password
@@ -47,13 +50,36 @@ public class UtilityAccount {
         return new ArrayList<>(billPaymentHistory);
     }
 
-    // Sets the next bill payment amount and due date
-    public void setNextBill(double amount, String dueDate) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Bill amount cannot be negative.");
+    // Retrieves the next bill due date
+    public void setNextBillDueDate() {
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("EEEE, MMMM dd");
+            Date currentDate = formatter.parse(nextBillDueDate);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(currentDate);
+            calendar.add(Calendar.MONTH, 1); // Add one month
+                nextBillDueDate = formatter.format(calendar.getTime());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        this.nextBillAmount = amount;
-        this.nextBillDueDate = dueDate;
+
+    }
+
+    public void calculateBillPayment(double amount) {
+        try {
+            if (amount > 0 && amount <= nextBillAmount) {
+                nextBillAmount -= amount;
+                if(nextBillAmount == 0) {
+                    nextBillAmount = 50; // Reset to 50 after full payment
+                    this.setNextBillDueDate();
+
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("** Something has gone wrong with your bill payment. **");
+        }
+
     }
 
     // Retrieves the next bill payment amount

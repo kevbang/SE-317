@@ -79,6 +79,10 @@ public class CheckingAccount extends Account {
             this.balance -= amount;
             Date date = new Date();
             utilityAccount.addBillPayment(date + " - Paid $" + amount);
+            utilityAccount.calculateBillPayment(amount); // Update the bill payment history
+            // Update the next bill amount
+
+
 
             return true;
         }

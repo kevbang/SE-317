@@ -35,7 +35,7 @@ public class ATM {
                 System.out.println("5. Withdraw from Checking Account");
                 System.out.println("6. Transfer from Checking to Savings");
                 System.out.println("7. Transfer from Savings to Checking");
-                System.out.println("8. Create a New Utility Account");
+                System.out.println("8. Create a new Utility Account");
                 System.out.println("9. Log into Utility Account");
                 System.out.println("10. Exit");
 
@@ -165,6 +165,7 @@ public class ATM {
                                     case 3:
                                         // View next bill amount and due date
                                         System.out.println("Next Bill Amount: $" + user.getUtilityAccount().getNextBillAmount());
+                                        System.out.println("Due: " + user.getUtilityAccount().nextBillDueDate);
                                         break;
                                     case 4:
                                         // Logout from utility account
