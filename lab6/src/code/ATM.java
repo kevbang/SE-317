@@ -1,6 +1,5 @@
 package code;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class ATM {
@@ -159,7 +158,6 @@ public class ATM {
                                         double billAmount = scanner.nextDouble();
                                         if (user.getCheckingAccount().payBill(user.getUtilityAccount(), billAmount)) {
                                             System.out.println("Bill payment successful!");
-                                            user.getUtilityAccount().addBillPayment("Paid $" + billAmount);
                                         } else {
                                             System.out.println("Bill payment failed. Insufficient funds.");
                                         }

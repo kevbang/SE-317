@@ -1,5 +1,7 @@
 package code;
 
+import java.util.Date;
+
 /**
  * CheckingAccount class that extends the Account class.
  * Implements rules for deposits, withdrawals, transfers, and bill payments
@@ -75,7 +77,9 @@ public class CheckingAccount extends Account {
     public boolean payBill(UtilityAccount utilityAccount, double amount) {
         if (amount > 0 && amount <= this.balance) {
             this.balance -= amount;
-            utilityAccount.addBillPayment("Paid $" + amount);
+            Date date = new Date();
+            utilityAccount.addBillPayment(date + " - Paid $" + amount);
+
             return true;
         }
         return false;

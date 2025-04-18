@@ -8,9 +8,9 @@ public class UtilityAccount {
     private String username;
     private String password;
     private int accountNumber;
-    private List<String> billPaymentHistory;
     private double nextBillAmount;
     private String nextBillDueDate;
+    public List<String> billPaymentHistory;
 
     /*
     Generates a random account number for the user
