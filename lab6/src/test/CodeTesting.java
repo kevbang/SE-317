@@ -1,6 +1,7 @@
+package test;
+
 import code.CheckingAccount;
 import code.SavingsAccount;
-import code.UtilityAccount;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
